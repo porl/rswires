@@ -1,12 +1,12 @@
 package net.dblsaiko.rswires.common.util
 
 import net.dblsaiko.hctm.common.util.ext.rotateClockwise
+import net.dblsaiko.qcommon.croco.Mat4
+import net.dblsaiko.qcommon.croco.Vec3
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.util.shape.VoxelShapes
-import therealfarfetchd.qcommon.croco.Mat4
-import therealfarfetchd.qcommon.croco.Vec3
 import java.util.*
 
 /**

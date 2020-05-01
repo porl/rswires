@@ -5,9 +5,10 @@ import net.dblsaiko.hctm.common.init.Items
 import net.dblsaiko.hctm.common.wire.BlockPartProvider
 import net.dblsaiko.hctm.common.wire.getWireNetworkState
 import net.dblsaiko.rswires.common.util.reverseAdjustRotation
+import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
-import net.minecraft.entity.EntityContext
+import net.minecraft.block.ShapeContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.server.world.ServerWorld
@@ -29,7 +30,7 @@ import net.minecraft.world.BlockView
 import net.minecraft.world.IWorld
 import net.minecraft.world.World
 
-abstract class GateBlock(settings: Block.Settings) : Block(settings), BlockPartProvider {
+abstract class GateBlock(settings: AbstractBlock.Settings) : Block(settings), BlockPartProvider {
 
   override fun appendProperties(builder: Builder<Block, BlockState>) {
     super.appendProperties(builder)
@@ -37,7 +38,7 @@ abstract class GateBlock(settings: Block.Settings) : Block(settings), BlockPartP
     builder.add(GateProperties.ROTATION)
   }
 
-  override fun method_9517(state: BlockState, world: IWorld, pos: BlockPos, flags: Int) {
+  override fun prepare(state: BlockState, world: IWorld, pos: BlockPos, flags: Int) {
     if (!world.isClient && world is ServerWorld)
       world.getWireNetworkState().controller.onBlockChanged(world, pos, state)
   }
@@ -81,11 +82,11 @@ abstract class GateBlock(settings: Block.Settings) : Block(settings), BlockPartP
     return PASS
   }
 
-  override fun getCollisionShape(state: BlockState, view: BlockView, pos: BlockPos, ePos: EntityContext): VoxelShape {
+  override fun getCollisionShape(state: BlockState, view: BlockView, pos: BlockPos, ePos: ShapeContext): VoxelShape {
     return COLLISION.getValue(state[Properties.FACING])
   }
 
-  override fun getOutlineShape(state: BlockState, view: BlockView, pos: BlockPos, ePos: EntityContext): VoxelShape {
+  override fun getOutlineShape(state: BlockState, view: BlockView, pos: BlockPos, ePos: ShapeContext): VoxelShape {
     return COLLISION.getValue(state[Properties.FACING])
   }
 

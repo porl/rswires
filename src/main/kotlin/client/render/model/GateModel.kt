@@ -1,5 +1,6 @@
 package net.dblsaiko.rswires.client.render.model
 
+import net.dblsaiko.qcommon.croco.Vec3
 import net.dblsaiko.rswires.common.block.GateProperties
 import net.dblsaiko.rswires.common.util.getRotationFor
 import net.fabricmc.fabric.api.renderer.v1.model.FabricBakedModel
@@ -19,7 +20,6 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.BlockRenderView
-import therealfarfetchd.qcommon.croco.Vec3
 import java.util.*
 import java.util.function.Function
 import java.util.function.Supplier
